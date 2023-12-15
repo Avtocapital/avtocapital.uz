@@ -10,11 +10,13 @@ const regaxPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{2}[-\s\.]?[0-9]{7}$/g;
 const form = document.querySelector(".form");
 const firstNameInput = form.querySelector(".firstName");
 const selectInput = form.querySelector("select");
+const selectInput2 = form.querySelector(".select2");
 const mobileInput = form.querySelector(".mobile");
 
 const checkInfo = function () {
   let firstName = "";
   let select = "";
+  let select2 = "";
   let phone = null;
   let message = "";
 
@@ -30,14 +32,20 @@ const checkInfo = function () {
     selectInput.classList.add("border-danger");
   }
 
+   if (selectInput2.value) {
+    select2 = selectInput2.value;
+  } else {
+    selectInput2.classList.add("border-danger");
+  }
+
   if (mobileInput.value.match(regaxPhone)) {
     phone = mobileInput.value;
   } else {
     mobileInput.classList.add("border-danger");
   }
 
-  if (firstName && select && phone) {
-    return (message = `Данные отправителя: %0A <strong>Имя:</strong> ${firstName} %0A <strong>Дилер:</strong> ${select} %0A <strong>Тел.номер:</strong> ${phone}`);
+  if (firstName && select && select2 && phone) {
+    return (message = `Данные отправителя: %0A <strong>Имя:</strong> ${firstName} %0A <strong>Дилер:</strong> ${select} %0A <strong>Тема заявки:</strong> ${select2} %0A <strong>Тел.номер:</strong> ${phone}`);
   }
   return false;
 };
@@ -54,6 +62,7 @@ const postInfo = async function (e) {
 
     firstNameInput.classList.remove("border-danger");
     selectInput.classList.remove("border-danger");
+    selectInput2.classList.remove("border-danger");
     mobileInput.classList.remove("border-danger");
   }
 };
