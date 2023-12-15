@@ -37,7 +37,7 @@ const checkInfo = function () {
   }
 
   if (firstName && select && phone) {
-    return (message = `User Info: %0A <strong>Firstname:</strong> ${firstName} %0A <strong>Email:</strong> ${select} %0A <strong>Phone:</strong> ${phone}`);
+    return (message = `Данные отправителя: %0A <strong>Имя:</strong> ${firstName} %0A <strong>Дилер:</strong> ${select} %0A <strong>Тел.номер:</strong> ${phone}`);
   }
   return false;
 };
